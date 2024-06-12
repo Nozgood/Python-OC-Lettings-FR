@@ -4,15 +4,15 @@ from django.db import migrations
 
 
 def transfer_profile_data(apps, schema_editor):
-    OldProfile = apps.get_model('oc_lettings_site', 'Profile')
-    NewProfile = apps.get_model('profiles', 'Profile')
-    User = apps.get_model('auth', 'User')
+    old_profile = apps.get_model('oc_lettings_site', 'Profile')
+    new_profile = apps.get_model('profiles', 'Profile')
+    user = apps.get_model('auth', 'User')
 
-    user_map = {user.id: user for user in User.objects.all()}
+    user_map = {user.id: user for user in user.objects.all()}
 
-    for old_profile in OldProfile.objects.all():
+    for old_profile in old_profile.objects.all():
         user = user_map[old_profile.user_id]
-        NewProfile.objects.create(
+        new_profile.objects.create(
             user=user,
             favorite_city=old_profile.favorite_city
         )
