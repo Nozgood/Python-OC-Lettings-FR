@@ -4,7 +4,10 @@ from django.db import migrations
 
 
 def transfer_profile_data(apps, schema_editor):
-    old_profile = apps.get_model('oc_lettings_site', 'Profile')
+    try:
+        old_profile = apps.get_model('oc_lettings_site', 'Profile')
+    except LookupError:
+        return
     new_profile = apps.get_model('profiles', 'Profile')
     user = apps.get_model('auth', 'User')
 
