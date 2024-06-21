@@ -4,9 +4,12 @@ from django.db import migrations
 
 
 def transfer_letting_data(apps, schema_editor):
-    OldLetting = apps.get_model('oc_lettings_site', 'Letting')
+    try:
+        OldLetting = apps.get_model('oc_lettings_site', 'Letting')
+        OldAddress = apps.get_model('oc_lettings_site', 'Address')
+    except LookupError:
+        return
     NewLetting = apps.get_model('lettings', 'Letting')
-    OldAddress = apps.get_model('oc_lettings_site', 'Address')
     NewAddress = apps.get_model('lettings', 'Address')
 
     address_map = {old_address.id: NewAddress.objects.get(street=old_address.street, number=old_address.number) for old_address in OldAddress.objects.all()}

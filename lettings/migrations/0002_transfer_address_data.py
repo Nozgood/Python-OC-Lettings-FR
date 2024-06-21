@@ -4,7 +4,10 @@ from django.db import migrations
 
 
 def transfer_address_data(apps, schema_editor):
-    OldAddress = apps.get_model('oc_lettings_site', 'Address')
+    try:
+        OldAddress = apps.get_model('oc_lettings_site', 'Address')
+    except LookupError:
+        return
     NewAddress = apps.get_model('lettings', 'Address')
 
     for old_address in OldAddress.objects.all():
