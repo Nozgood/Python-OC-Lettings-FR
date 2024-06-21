@@ -1,5 +1,5 @@
 from django.test import TestCase
-from lettings.models import Address
+from lettings.models import Address, Letting
 
 
 class AddressModelTest(TestCase):
@@ -30,3 +30,32 @@ class AddressModelTest(TestCase):
             country_iso_code='TST'
         )
         self.assertEqual(str(address), '123 Main St')
+
+
+class LettingModelTest(TestCase):
+
+    def setUp(self):
+        self.address = Address.objects.create(
+            number=123,
+            street='Test Street',
+            city='Test City',
+            state='TS',
+            zip_code=12345,
+            country_iso_code='TST'
+        )
+        self.letting = Letting.objects.create(
+            title='Test Letting',
+            address=self.address
+        )
+
+    def test_letting_creation(self):
+        self.assertEqual(self.letting.title, 'Test Letting')
+        self.assertEqual(self.letting.address, self.address)
+
+    def test_letting_str(self):
+        self.assertEqual(str(self.letting), 'Test Letting')
+
+    def test_letting_address_cascade_delete(self):
+        self.address.delete()
+        lettings = Letting.objects.filter(title='Test Letting')
+        self.assertEqual(lettings.count(), 0)
