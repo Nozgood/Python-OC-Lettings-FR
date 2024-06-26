@@ -18,8 +18,10 @@ jobs:
     - name: Clone repository
       uses: actions/checkout@v2
 
-    - name: check python version
-      run: python --version
+    - name: check python and pip version
+      run:
+      - python --version
+      - pip --version
 
     - name: test
       run: echo "hello world this is TEST pipeline"
