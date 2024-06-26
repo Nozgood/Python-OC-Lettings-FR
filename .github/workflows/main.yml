@@ -42,5 +42,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: lint
-        run: echo "hello this is LINT pipeline"
+    - name: setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11.6
+
+    - name: Clone repository
+      uses: actions/checkout@v2
+
+    - name: check python and pip version
+      run: python --version; pip --version
+
+    - name: install requirements
+      run: pip install -r requirements.txt
+
+    - name: lint
+      run: flake8
