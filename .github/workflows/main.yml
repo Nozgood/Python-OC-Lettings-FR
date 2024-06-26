@@ -38,10 +38,6 @@ jobs:
           coverage report > coverage.txt
           coverage report --fail-under=90
 
-    - name: Verify coverage
-      if: failure()
-      run: echo "attention couverture insuffisante" && exit 1
-
   lint:
     runs-on: ubuntu-latest
 
