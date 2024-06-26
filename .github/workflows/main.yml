@@ -21,11 +21,14 @@ jobs:
     - name: check python and pip version
       run: python --version; pip --version
 
-    - name: check where we are
-      run: ls -la
+    - name: install requirements
+      run: pip install -r requirements.txt
+
+    - name: check django version
+      run: python -m django --version
 
     - name: test
-      run: echo "hello world this is TEST pipeline"
+      run: python manage.py test
   lint:
     runs-on: ubuntu-latest
 
