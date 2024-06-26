@@ -1,5 +1,17 @@
-stages:
-  - test
+name: Print Hello World
 
-test_job:
-  print("hello")
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Print Hello World
+      run: echo "hello world"
