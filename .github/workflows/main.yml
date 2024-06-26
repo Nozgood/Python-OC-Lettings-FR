@@ -28,17 +28,8 @@ jobs:
       run: python -m django --version
 
     - name: test
-      id: run_tests
       run: python manage.py test
-      continue-on-error: true
-
-    - name: Check test results
-      if: steps.run_tests.outcome == 'success'
-      run: echo "bien joué"
-
-    - name: Handle test failures
-      if: steps.run_tests.outcome != 'success'
-      run: echo "test failed" && exit 1
+      continue-on-error: false
 
     - name: check coverage
       run: coverage run --source='.' manage.py test; coverage report

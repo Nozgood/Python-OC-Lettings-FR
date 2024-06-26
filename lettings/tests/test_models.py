@@ -49,7 +49,7 @@ class LettingModelTest(TestCase):
         )
 
     def test_letting_creation(self):
-        self.assertEqual(self.letting.title, 'Test Letting')
+        self.assertEqual(self.letting.title, 'Test Leting')
         self.assertEqual(self.letting.address, self.address)
 
     def test_letting_str(self):
