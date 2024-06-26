@@ -1,6 +1,6 @@
 name: test
 
-on: # precise quand est-ce que le job doit s'executer
+on:
   push:
     branches:
       - "*"
@@ -10,8 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11.6
+
+    - name: Clone repository
       uses: actions/checkout@v2
+
+    - name: check python version
+      run: echo "python --version"
 
     - name: test
       run: echo "hello world this is TEST pipeline"
