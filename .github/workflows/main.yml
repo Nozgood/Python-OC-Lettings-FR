@@ -1,17 +1,23 @@
-name: Print Hello World
+name: test
 
-on:
+on: # precise quand est-ce que le job doit s'executer
   push:
     branches:
-      - master
+      - "*"
 
 jobs:
-  hello_world_job:
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Print Hello World
-      run: echo "hello world"
+    - name: test
+      run: echo "hello world this is TEST pipeline"
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: lint
+        run: echo "hello this is LINT pipeline"
