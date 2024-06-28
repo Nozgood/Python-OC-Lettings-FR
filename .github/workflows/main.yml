@@ -92,5 +92,4 @@ jobs:
       with:
         context: .
         push: true
-        platforms: linux/x86_x64
         tags: ${{ secrets.DOCKER_USERNAME }}/p13_lettings:latest, ${{ secrets.DOCKER_USERNAME }}/p13_lettings:${{ env.COMMIT_HASH }}
