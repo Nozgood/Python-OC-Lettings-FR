@@ -60,7 +60,7 @@ jobs:
       run: flake8
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     needs: [test, lint]
     if: github.ref == 'refs/heads/master'
 
