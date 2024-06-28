@@ -81,4 +81,10 @@ jobs:
       id: vars
       run: | 
         echo "COMMIT_HASH=${GITHUB_SHA::7}" >> $GITHUB_ENV
-        echo $GITHUB_ENV
+
+    - name: Build and push Docker Image
+      uses: docker/build-pus-action@v4
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/p13_lettings:latest, ${{ secrets.DOCKER_USERNAME }}/p13_lettings:${{ env.COMMIT_HASH }}
