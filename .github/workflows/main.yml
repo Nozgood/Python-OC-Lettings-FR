@@ -79,4 +79,6 @@ jobs:
 
     - name: Extract commit hash
       id: vars
-      run: echo "COMMIT_HASH=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      run: | 
+        echo "COMMIT_HASH=${GITHUB_SHA::7}" >> $GITHUB_ENV
+        echo $GITHUB_ENV
