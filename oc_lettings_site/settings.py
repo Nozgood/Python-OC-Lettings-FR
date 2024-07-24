@@ -13,8 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['localhost', '0.0.0.0']
+DEBUG = False
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', 'p13-lettings.onrender.com']
 
 # Application definition
 
