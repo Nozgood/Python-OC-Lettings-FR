@@ -111,5 +111,9 @@ jobs:
     if: github.ref == 'refs/heads/master'
 
     steps:
-      - name: test
-        run: echo "hello this is deploy step"
+      - name: deploy render
+        run: |
+          curl -X POST \
+          -H "Accept: application/json" \
+          ${{ secrets.RENDER_DEPLOY_HOOK_P13 }}
+
