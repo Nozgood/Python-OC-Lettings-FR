@@ -106,3 +106,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
+
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 60
