@@ -105,6 +105,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
-SECURE_SSL_REDIRECT = True
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
