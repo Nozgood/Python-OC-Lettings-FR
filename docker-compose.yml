@@ -1,11 +1,22 @@
 version: '3'
 services:
-  web:
-    build: .
-    command: gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:8000
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile-gunicorn
     volumes:
       - .:/app
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     env_file:
       - .env
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "oc_lettings_site.wsgi:application"]
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - django
