@@ -91,19 +91,10 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
-        file: ./Dockerfile-gunicorn
+        file: ./Dockerfile
         push: true
         platforms: linux/amd64,linux/arm64
         tags: ${{ secrets.DOCKER_USERNAME }}/p13_lettings:latest, ${{ secrets.DOCKER_USERNAME }}/p13_lettings:${{ env.COMMIT_HASH }}
-
-    - name: Build and push Docker Nginx Image
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        file: ./Dockerfile-nginx
-        push: true
-        platforms: linux/amd64,linux/arm64
-        tags: ${{ secrets.DOCKER_USERNAME }}/p13_lettings_nginx:latest, ${{ secrets.DOCKER_USERNAME }}/p13_lettings_nginx:${{ env.COMMIT_HASH }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -116,4 +107,3 @@ jobs:
           curl -X POST \
           -H "Accept: application/json" \
           ${{ secrets.RENDER_DEPLOY_HOOK_P13 }}
-
