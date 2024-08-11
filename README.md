@@ -75,3 +75,34 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+## Déploiement 
+
+### Fonctionnement 
+
+Le déploiement de l'application se fait grâce à une image docker 
+crée et push sur Docker Hub au préalable
+La tâche de création de l'image Docker ainsi que du déploiement (sur Render) se fait
+automatiquement via des pipelines sur GitHub Actions, à condition que certains pré-requis soient
+respectés:
+- le push doit être effectué sur la branch master 
+- la pipeline de test et de lint ne doit pas fail pour que la conteneurisation se fasse
+- la pipeline de conteneurisation ne doit pas fail pour que le déploiement se fasse 
+
+Vous retrouverez tout les détails concernant la configuration des pipelines 
+directement dans `./github/workflows/main.yml`
+
+### Credentials
+
+Afin d'assurer la conteneurisation et le déploiement de l'application en toute 
+sécurité, il faudra configurer 3 `secrets` sur votre compte GitHub:
+- DOCKER_USERNAME
+- DOCKER_PASSWORD
+- RENDER_DEPLOY_HOOK_P13
+
+Les 2 premiers secrets correspondent à vos identifiants Docker, quant au 3eme
+il est nécéssaire pour pouvoir lancer une requête à Render qui re-déploiera 
+automatiquement l'application
+
+Ainsi, en respectant les pré-requis et en ajoutant les secrets, l'application se 
+déploiera automatiquement
