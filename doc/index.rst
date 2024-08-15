@@ -10,3 +10,4 @@ En plus de la gestion des biens immobiliers, le site permet également de gérer
     :caption: Contenu
 
     installation
+    deployment

@@ -1,4 +1,4 @@
-Développement local
+Installation
 ===================
 
 Prérequis
