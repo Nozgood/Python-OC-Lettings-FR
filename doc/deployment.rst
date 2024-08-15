@@ -28,3 +28,8 @@ Ainsi, en respectant les prérequis et en ajoutant les secrets, l'application se
 
 WARNING: Si vous modifiez le nom de domaine de l'application, pensez à l'ajouter dans
 la variable d'environnement `ALLOWED_HOSTS`
+
+Note: nous n'avons pas encore mis en place de serveur Nginx pour rendre "proprement" les fichiers statiques.
+C'est donc la librairie `Whitenoise` qui nous permets de les renvoyer
+
+La mise en place d'un serveur Nginx reste néanmoins une tâche à garder en tête.
