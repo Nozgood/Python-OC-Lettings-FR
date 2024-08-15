@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+import sentry_sdk
 
 load_dotenv()
 
@@ -11,6 +12,13 @@ SECRET_KEY = os.getenv('SECRET_KEY', "secret-key")
 DEBUG = os.getenv('DEBUG', "False") == "True"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
+
+# Sentry configuration
+sentry_sdk.init(
+    dsn=os.getenv("SENTRY_URI", ""),
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)
 
 INSTALLED_APPS = [
     'oc_lettings_site.apps.OCLettingsSiteConfig',

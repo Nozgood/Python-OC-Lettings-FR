@@ -11,7 +11,8 @@ Site web d'Orange County Lettings
 - SQLite3 CLI
 - Interpréteur Python, version 3.6 ou supérieure
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+Dans le reste de la documentation sur le développement local, il est supposé que 
+la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
 
 ### macOS / Linux
 
@@ -75,6 +76,18 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+## Monitoring
+
+### Sentry
+
+Nous utilisons Sentry comme outil de monitoring d'erreur, grâce à la librairie
+`sentry-sdk`, l'intégration est très facile à mettre en place dans une application
+Django commme celle-ci.
+
+Vous trouverez la méthode d'instanciation de sentry dans `settings.py`,
+l'élement important est le DSN (Data Source Name), ce dernier est fourni par 
+Sentry, vous la retrouverez dans le `.env` (`SENTRY_URI`)
 
 ## Déploiement 
 

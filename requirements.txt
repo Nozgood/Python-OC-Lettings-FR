@@ -25,6 +25,7 @@ pytest-django==3.9.0
 python-dotenv==1.0.1
 pytz==2024.1
 requests==2.32.3
+sentry-sdk==2.13.0
 snowballstemmer==2.2.0
 Sphinx==8.0.2
 sphinxcontrib-applehelp==2.0.0
